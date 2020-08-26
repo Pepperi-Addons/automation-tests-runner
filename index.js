@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const fetch = require('node-fetch');
 const { Command } = require('commander');
 
@@ -97,19 +99,19 @@ return testStatus;
 
 const program = new Command("automation tests")
     .description('A script for running automation tests')
-    .option(
+    .requiredOption(
         '-u, --user-name <username>', 
         'The user to run the tests on'
     )
-    .option(
+    .requiredOption(
         '-p, --password <password>', 
         'The password of the user to run the tests on'
     )
-    .option(
+    .requiredOption(
         '-v, --papi-version <version>', 
         'The papi version'
     )
-    .option(
+    .requiredOption(
         '-t, --test-endpoint <endpoint>', 
         'The papi version'
     )
