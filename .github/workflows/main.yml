@@ -42,8 +42,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     # commit version change
-    - name: Commit
-      run: git commit -am "Bumped version" && git push
+    - name: Push version change
+      run: git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
