@@ -108,7 +108,7 @@ const program = new Command("automation tests")
         'The password of the user to run the tests on'
     )
     .requiredOption(
-        '-v, --papi-version <version>', 
+        '-v, --papi-version <papiVersion>', 
         'The papi version'
     )
     .requiredOption(
