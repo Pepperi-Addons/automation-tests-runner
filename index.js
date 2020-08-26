@@ -120,7 +120,7 @@ const program = new Command("automation tests")
 program.parse(process.argv);
 
 runTest(program['userName'], program['password'], program['papiVersion'], program['testEndpoint']).then(result => {
-    process.exit(result ? 1 : 0)
+    process.exit(result ? 0 : 1)
 })
 /////////////////////////////////list of endPoints -> arg[5]
 // run_scheduler_test
