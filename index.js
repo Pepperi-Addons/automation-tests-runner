@@ -19,7 +19,7 @@ async function runTest(username, password, version, endpoint) {
     console.log("get JWT for ", username, " - ", password);
 //////////////////////////////////////////////////////////////////////Token
     var data = "userName=" + username + "&password=" + password + "&scope=pepperi.apint pepperi.wacd offline_access&grant_type=password&client_id=ios.com.wrnty.peppery"
-    const res = await fetch('https://idp.sandbox.pepperi.com/connect/token', {
+    const res = await fetch('https://idp.staging.pepperi.com/connect/token', {
         body: data,
         method: "POST",
         headers: {
@@ -33,7 +33,7 @@ async function runTest(username, password, version, endpoint) {
 
     console.log("update version to ", version);
     
-    const res1 = await fetch('https://papi.sandbox.pepperi.com/v1.0/addons/installed_addons/' + addonUUID + '/upgrade/' + version , {
+    const res1 = await fetch('https://papi.staging.pepperi.com/v1.0/addons/installed_addons/' + addonUUID + '/upgrade/' + version , {
         method: "POST",
         headers: {
             'Authorization': 'Bearer ' + a.access_token
@@ -48,7 +48,7 @@ async function runTest(username, password, version, endpoint) {
 
     console.log("run test - ", endpoint);
     
-    const res2 = await fetch('https://papi.sandbox.pepperi.com/V1.0/addons/api/async/871526f9-043b-4a4a-8cc1-7d443eadd008/' + endpoint , {
+    const res2 = await fetch('https://papi.staging.pepperi.com/V1.0/addons/api/async/871526f9-043b-4a4a-8cc1-7d443eadd008/' + endpoint , {
         method: "GET",
         headers: {
             'Authorization': 'Bearer ' + a.access_token
@@ -64,7 +64,7 @@ async function runTest(username, password, version, endpoint) {
     
     var i = 0;
     do {
-        var res3 = await fetch('https://papi.sandbox.pepperi.com/V1.0' + c.URI , {
+        var res3 = await fetch('https://papi.staging.pepperi.com/V1.0' + c.URI , {
             method: "GET",
             headers: {
                 'Authorization': 'Bearer ' + a.access_token
@@ -129,5 +129,5 @@ runTest(program['userName'], program['password'], program['papiVersion'], progra
 // run_addonJob_test
 // run_codejobRetry_test
 ///////////////////////////////////////////////////////////
-//node .\index.js CodeJobAutomation@pepperitest.com 123456 v280 api/run_scheduler_test  
+//node .\index.js -u CodeJobAutomation@pepperitest.com -p 123456 -v v280 -t api/run_addonJob_test 
     
