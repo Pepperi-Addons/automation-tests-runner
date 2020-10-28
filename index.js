@@ -48,11 +48,18 @@ async function runTest(username, password, version, endpoint) {
 
     console.log("run test - ", endpoint);
     
-    const res2 = await fetch('https://papi.staging.pepperi.com/V1.0/addons/api/async/871526f9-043b-4a4a-8cc1-7d443eadd008/' + endpoint , {
+    //const res2 = await fetch('https://papi.staging.pepperi.com/V1.0/addons/api/async/871526f9-043b-4a4a-8cc1-7d443eadd008/' + endpoint , {
+    const res2 = await fetch('https://papi.staging.pepperi.com/V1.0/addons/api/async/f3e2a0cd-9105-464a-b5b2-f99ff7b84d2b/tests/all' , {
         method: "GET",
         headers: {
             'Authorization': 'Bearer ' + a.access_token
+        },
+        ///////////added body with list of tests
+        body: {
+            "Audit Logs": "/addons/api/async/eb26afcd-3cf2-482e-9ab1-b53c41a6adbe/tests/audit_logs",
+            "Objects": "/addons/api/async/eb26afcd-3cf2-482e-9ab1-b53c41a6adbe/tests/objects"
         }
+        ///////////////////////////////////////
     })
 
     const c = await res2.json();
@@ -119,7 +126,8 @@ const program = new Command("automation tests")
 
 program.parse(process.argv);
 
-runTest(program['userName'], program['password'], program['papiVersion'], program['testEndpoint']).then(result => {
+//runTest(program['userName'], program['password'], program['papiVersion'], program['testEndpoint']).then(result => {
+    runTest(program['userName'], program['password'], program['papiVersion']).then(result => {
     process.exit(result ? 0 : 1)
 })
 /////////////////////////////////list of endPoints -> arg[5]
