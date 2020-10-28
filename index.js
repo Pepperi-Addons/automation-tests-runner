@@ -118,16 +118,19 @@ const program = new Command("automation tests")
         '-v, --papi-version <papiVersion>', 
         'The papi version'
     )
+    // .requiredOption(
+    //     '-t, --test-endpoint <endpoint>', 
+    //     'The papi version'
+    // )
     .requiredOption(
-        '-t, --test-endpoint <endpoint>', 
-        'The papi version'
-    )
-
+            '-t, --test-enviroment <enviroment>', 
+            'The test enviroment'
+        )
 
 program.parse(process.argv);
 
 //runTest(program['userName'], program['password'], program['papiVersion'], program['testEndpoint']).then(result => {
-    runTest(program['userName'], program['password'], program['papiVersion']).then(result => {
+    runTest(program['userName'], program['password'], program['papiVersion'], program['testEnviroment']).then(result => {
     process.exit(result ? 0 : 1)
 })
 /////////////////////////////////list of endPoints -> arg[5]
